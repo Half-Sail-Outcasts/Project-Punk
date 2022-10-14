@@ -20,3 +20,6 @@ ProjectPunk/Temp
 ProjectPunk/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 *.json
 *.dwlt
+ProjectPunk/UserSettings/Layouts/default-2021.dwlt
+ProjectPunk/UserSettings/EditorUserSettings.asset
+ProjectPunk/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
