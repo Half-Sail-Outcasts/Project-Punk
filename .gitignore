@@ -18,3 +18,5 @@ ProjectPunk/Temp
 
 *.unitypackage
 ProjectPunk/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+*.json
+*.dwlt
