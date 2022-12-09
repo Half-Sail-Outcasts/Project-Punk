@@ -10,11 +10,19 @@ public class RadomNumberScript : MonoBehaviour
     public GameObject object1;
     public GameObject object2;
 
+    public int rariety;
+    public int item;
+    public int value;
+
     void Start()
     {
-        spawn = Random.Range(1, 1000);
-        Debug.Log(spawn);
-        Spawn();
+
+        rariety = Random.Range(1, 9);
+        item = Random.Range(1, 9);
+        value = Random.Range(1, 9);
+        Debug.Log("Rare" + rariety);
+        Debug.Log("item" + item);
+        Debug.Log("value" + value);
     }
 
     // Update is called once per frame
