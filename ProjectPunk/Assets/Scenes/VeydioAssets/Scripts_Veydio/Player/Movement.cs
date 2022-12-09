@@ -41,6 +41,7 @@ public class Movement : MonoBehaviour
 
     Vector2 horizontalInput;
     Vector2 lookInput;
+    [SerializeField] VaultingCheck vaultingCheck;
     [SerializeField] GroundCheck groundCheck;
     [SerializeField] ClamberCheck clamCheck;
     [SerializeField] Vector3 verticalVelocity;
@@ -258,14 +259,13 @@ public class Movement : MonoBehaviour
         #endregion
         #region Clambering
         //Clamber behavior
-        if (clamCheck.isClamber)//Still jittery //disable collision
+        if (clamCheck.isClamber)
         {
             verticalVelocity.y = 5;
 
             groundCheck.isGround = false;
-            controller.Move(transform.forward * 5 * Time.deltaTime);
+            controller.Move(transform.forward * 2.5f * Time.deltaTime);
 
-            //PGC.GetComponent<SphereCollider>().enabled = false;
             //disable ground check while clamber
             //or start coroutine
             StartCoroutine(ClamberTime());
@@ -273,9 +273,26 @@ public class Movement : MonoBehaviour
 
         if (clamberForward)
         {
-
             controller.Move(transform.forward * 2 * Time.deltaTime);
             //start coroutine
+            StartCoroutine(ClamberForwordTime());
+        }
+        #endregion
+        #region Vaulting
+        //Reusing Clamber code but with a different Check
+        if (vaultingCheck.canVault && isSprinting && !groundCheck.isRamp)
+        {
+            verticalVelocity.y = 3;
+            doneJumping = true;
+            groundCheck.isGround = false;
+            controller.Move(transform.forward * 2 * Time.deltaTime);
+            StartCoroutine(ClamberTime());
+        }
+
+        if (clamberForward)
+        {
+            doneJumping = true;
+            controller.Move(transform.forward * 2 * Time.deltaTime);
             StartCoroutine(ClamberForwordTime());
         }
         #endregion
